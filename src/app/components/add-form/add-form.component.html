@@ -1,0 +1,36 @@
+<form #addForm="ngForm" (ngSubmit)="onSubmit(addForm)" class="form-row">
+    <div class="col">
+
+  <input 
+  type="text" 
+  [(ngModel)]="task.name" 
+  [ngClass]="{'is-invalid':taskName.errors && taskName.touched}"
+  class="form-control" 
+  placeholder="Task name"
+  name="name"
+  #taskName="ngModel"
+  required
+  minlength="1"
+  >
+  <div [hidden]="!taskName.errors?.required" class="invalid-feedback">Name required</div>
+</div>
+
+    <div class="col">
+  <select type="text"
+  [(ngModel)]="task.priority" 
+  [ngClass]="{'is-invalid':taskPriority.errors && taskPriority.touched}"
+  class="form-control" 
+  name="priority"
+  #taskPriority="ngModel"
+  required
+  minlength="1"
+  >
+    <option selected disabled>Priority</option>
+    <option>Low</option>
+    <option>Medium</option>
+    <option>High</option>
+  </select>
+  <div [hidden]="!taskPriority.errors?.required" class="invalid-feedback">Choose priority</div>
+</div>
+    <input type="submit"  value="Add The Task" class="btn btn-dark">
+</form>

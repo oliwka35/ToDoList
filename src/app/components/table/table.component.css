@@ -1,0 +1,67 @@
+*{
+    box-sizing: border-box;
+    max-width: 95vw;
+    
+}
+table{
+    border: 7px solid rgba(238, 238, 238);
+}
+thead{
+background-color: rgba(73, 68, 48);
+color: white;
+}
+
+th, td{
+    font-weight: 100;
+    line-height: 30px;
+}
+
+.check-box{
+display: block;
+padding: 0;
+height: 20px;
+width: 20px;
+border:none;
+outline:none;
+background-color: transparent;
+border-radius: 2px;
+}
+
+.box{
+    border: 2px solid grey;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.fa-check{
+background-color: rgba(243, 154, 62);
+color: white;
+font-size: 20px;
+}
+
+.bin, .arrow {
+    display: none;
+    font-size: 20px;
+    position: absolute;
+    margin: 5px;
+}
+
+.showBin .bin, .showArrow .arrow{
+display: inline;
+}
+
+@media(max-width: 600px){
+    th, td{
+        display: block;
+    }
+    
+    .delete{
+        display: none;
+    }
+
+    .bin{
+        position: relative;
+        margin: 0;
+    }
+    
+}

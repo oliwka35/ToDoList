@@ -1,0 +1,50 @@
+
+<div class="container">
+<table *ngIf="tasks.length > 0"  class="table table-hover">
+  <thead>
+    <tr>
+      <th   
+       *ngFor="let rowHeader of rowHeaders; let i = index"
+       (mouseover)="setHoveredHeader(i)"
+       (mouseleave)="showArrow=false" 
+       [class.showArrow]="i == hoveredHeader"
+       [id]="rowHeader.rowName"
+       (click)="sort($event); rowHeader.sorted = !rowHeader.sorted; tasks.done=false">
+       {{rowHeader.rowName | uppercase}} 
+       <i [style.display]="!showArrow ? 'none' : ''"
+        [ngClass]="rowHeader.sorted ? 'fa fa-sort-up arrow' : 'fa fa-sort-down arrow'"></i>
+      </th>
+      <th class="delete"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr 
+    *ngFor="let task of tasks; let i = index"
+    (mouseover)="setHoveredRow(i)" 
+    (mouseleave)="showBin=false" 
+    [class.showBin]="i == hoveredRow">
+        <td>{{task.name}}</td>
+        <td>{{task.priority}}</td>
+        <td>
+          <button
+          class="check-box"
+          type="checkbox"
+          (click)="task.done = !task.done"
+          [ngClass]="task.done ? '' : 'box'"
+          >
+        <i [ngClass]="task.done ? 'fa fa-check' : ''"></i>
+        </button>
+        <td> 
+          <i
+           [style.display]="!showBin ? 'none' : ''"
+           class="fa fa-trash bin"
+           (click)="delete(i)"
+           ></i>
+        </td>
+       </tr>
+</tbody>
+</table>
+<div *ngIf="tasks.length ==0" class="container">
+<h4 >No Tasks Found</h4>
+</div>
+</div>
